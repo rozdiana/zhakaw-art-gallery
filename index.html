@@ -1,0 +1,462 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f4ed">
+  <meta name="description" content="ژاکاو؛ گالری هنرهای دکوراتیو معاصر، تابلوهای هنری و سفارش‌های اختصاصی.">
+  <title>Zhakaw Art Gallery | گالری هنر ژاکاو</title>
+  <style>
+    :root {
+      --cream: #f7f4ed;
+      --paper: #fffdf8;
+      --olive: #747653;
+      --gold: #b79a59;
+      --ink: #292a24;
+      --muted: #77766e;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Tahoma, Arial, sans-serif;
+      line-height: 1.8;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 7%;
+      border-bottom: 1px solid #ded8c9;
+      background: var(--paper);
+    }
+
+    .brand {
+      font-family: Georgia, serif;
+      font-size: clamp(21px, 3vw, 29px);
+      letter-spacing: 2px;
+      color: var(--olive);
+      font-weight: bold;
+    }
+
+    .brand small {
+      display: block;
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-align: center;
+      color: var(--gold);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 22px;
+      font-size: 13px;
+    }
+
+    nav a:hover { color: var(--olive); }
+
+    .lang {
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--ink);
+      padding: 7px 12px;
+      border-radius: 3px;
+    }
+
+    .hero {
+      min-height: 490px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 40px;
+      padding: 70px 9%;
+    }
+
+    .eyebrow {
+      color: var(--olive);
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      font-family: Georgia, Tahoma, serif;
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.4;
+      font-weight: 500;
+      margin: 14px 0;
+    }
+
+    h1 span { color: var(--olive); }
+
+    .intro {
+      max-width: 490px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 21px;
+      border: 1px solid var(--olive);
+      background: var(--olive);
+      color: white;
+      font-size: 13px;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--olive);
+    }
+
+    .art-panel {
+      min-height: 330px;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      background:
+        radial-gradient(ellipse at 50% 45%, #e9dfc7 0 12%, transparent 12.5%),
+        linear-gradient(135deg, #ded7c5, #f9f5eb 45%, #d6d3bc);
+      border: 1px solid #e0d8c7;
+    }
+
+    .art-frame {
+      width: min(78%, 290px);
+      aspect-ratio: 4 / 5;
+      padding: 12px;
+      background: #c0a36a;
+      box-shadow: 0 14px 35px #48412b24;
+    }
+
+    .art-inner {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      border: 7px solid #f9f5eb;
+      background:
+        radial-gradient(ellipse at center, transparent 0 17%, #a7a17b 17.5% 19%, transparent 19.5%),
+        repeating-linear-gradient(45deg, transparent 0 19px, #b49b65 20px 22px, transparent 23px 39px),
+        #e9e0ce;
+    }
+
+    .art-symbol {
+      width: 48%;
+      aspect-ratio: 1;
+      border: 2px solid #777650;
+      transform: rotate(45deg);
+      display: grid;
+      place-items: center;
+    }
+
+    .art-symbol::after {
+      content: "";
+      width: 55%;
+      aspect-ratio: 1;
+      border: 2px solid #b69a5d;
+      background: #f7f1e4;
+    }
+
+    section.content {
+      padding: 68px 8%;
+    }
+
+    .section-head {
+      text-align: center;
+      margin: 0 auto 35px;
+      max-width: 620px;
+    }
+
+    .section-head h2 {
+      font-family: Georgia, Tahoma, serif;
+      font-size: clamp(27px, 3vw, 38px);
+      font-weight: 500;
+      margin: 8px 0;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .product {
+      background: var(--paper);
+      border: 1px solid #e7e0d2;
+    }
+
+    .product-art {
+      min-height: 210px;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .product-art.one {
+      background: linear-gradient(135deg, #e8dfcc, #c6c4a8);
+    }
+
+    .product-art.two {
+      background: linear-gradient(135deg, #d9d2bd, #eee6d8);
+    }
+
+    .product-art.three {
+      background: linear-gradient(135deg, #d6d1bd, #e9dfc9);
+    }
+
+    .mini-art {
+      width: 115px;
+      height: 155px;
+      background: #f8f3e7;
+      border: 7px solid #b49a65;
+      outline: 1px solid #f8f3e7;
+      box-shadow: 0 10px 25px #25251d22;
+      display: grid;
+      place-items: center;
+    }
+
+    .mini-art span {
+      display: block;
+      width: 55px;
+      height: 55px;
+      border: 2px solid #777650;
+      transform: rotate(45deg);
+    }
+
+    .product-info { padding: 18px; }
+    .product-info h3 { margin: 0 0 5px; font-size: 16px; }
+    .product-info p { color: var(--muted); font-size: 13px; margin: 0; }
+
+    .note {
+      margin-top: 22px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .orders {
+      background: #e9e6d9;
+      padding: 55px 8%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .orders h2 {
+      font-family: Georgia, Tahoma, serif;
+      font-size: 32px;
+      font-weight: 500;
+      margin: 0 0 12px;
+    }
+
+    .orders p { color: #65655b; font-size: 14px; }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer {
+      padding: 25px 7%;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      background: var(--paper);
+    }
+
+    html[dir="ltr"] .brand small { letter-spacing: 0; }
+
+    @media (max-width: 760px) {
+      .topbar { flex-direction: column; }
+      nav { justify-content: center; gap: 12px; }
+      .hero { grid-template-columns: 1fr; padding: 45px 7%; }
+      .art-panel { min-height: 290px; }
+      .products { grid-template-columns: 1fr; }
+      .product-art { min-height: 240px; }
+      .orders { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Zhakaw Art Gallery">
+      ZHAKAW
+      <small>ART GALLERY</small>
+    </a>
+
+    <nav>
+      <a href="#home" data-fa="صفحه اصلی" data-en="Home">صفحه اصلی</a>
+      <a href="#gallery" data-fa="گالری آثار" data-en="Gallery">گالری آثار</a>
+      <a href="#about" data-fa="درباره ما" data-en="About">درباره ما</a>
+      <a href="#orders" data-fa="سفارش و همکاری" data-en="Orders & Trade">سفارش و همکاری</a>
+      <button class="lang" id="languageButton" type="button">English</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <div class="eyebrow" data-fa="هنر معاصر · طراحی ماندگار" data-en="CONTEMPORARY ART · TIMELESS DESIGN">
+          هنر معاصر · طراحی ماندگار
+        </div>
+        <h1 data-fa="هنر، برای <span>زندگی</span>" data-en="Art for <span>Living</span>">
+          هنر، برای <span>زندگی</span>
+        </h1>
+        <p class="intro"
+           data-fa="در ژاکاو، هنر معاصر با الهام از نقش‌ها، هندسه و فرهنگ در آثاری دکوراتیو برای فضاهای امروزی شکل می‌گیرد."
+           data-en="At Zhakaw, contemporary art draws on geometry, pattern and cultural heritage to create decorative works for modern spaces.">
+          در ژاکاو، هنر معاصر با الهام از نقش‌ها، هندسه و فرهنگ در آثاری دکوراتیو برای فضاهای امروزی شکل می‌گیرد.
+        </p>
+        <div class="actions">
+          <a class="btn" href="#gallery" data-fa="مشاهده مجموعه" data-en="Explore Collection">مشاهده مجموعه</a>
+          <a class="btn secondary" href="#orders" data-fa="درخواست سفارش" data-en="Enquire About Orders">درخواست سفارش</a>
+        </div>
+      </div>
+
+      <div class="art-panel" role="img" aria-label="نمونه گرافیکی تزئینی با الهام از هندسه">
+        <div class="art-frame">
+          <div class="art-inner">
+            <div class="art-symbol"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content" id="gallery">
+      <div class="section-head">
+        <div class="eyebrow" data-fa="منتخب ژاکاو" data-en="SELECTED WORKS">منتخب ژاکاو</div>
+        <h2 data-fa="مجموعه آثار هنری" data-en="Art Collections">مجموعه آثار هنری</h2>
+        <p data-fa="فضایی برای معرفی تابلوهای دکوراتیو، آثار سفارشی و مجموعه‌های ویژه."
+           data-en="Discover decorative art panels, commissioned works and special collections.">
+          فضایی برای معرفی تابلوهای دکوراتیو، آثار سفارشی و مجموعه‌های ویژه.
+        </p>
+      </div>
+
+      <div class="products">
+        <article class="product">
+          <div class="product-art one">
+            <div class="mini-art"><span></span></div>
+          </div>
+          <div class="product-info">
+            <h3 data-fa="هندسه معاصر" data-en="Contemporary Geometry">هندسه معاصر</h3>
+            <p data-fa="نقوش هندسی با نگاهی مدرن" data-en="Modern interpretations of geometric patterns">نقوش هندسی با نگاهی مدرن</p>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-art two">
+            <div class="mini-art"><span></span></div>
+          </div>
+          <div class="product-info">
+            <h3 data-fa="بافت و فرم" data-en="Texture & Form">بافت و فرم</h3>
+            <p data-fa="آثاری با الهام از بافت و حجم" data-en="Art inspired by texture and dimension">آثاری با الهام از بافت و حجم</p>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-art three">
+            <div class="mini-art"><span></span></div>
+          </div>
+          <div class="product-info">
+            <h3 data-fa="میراث و هنر" data-en="Heritage & Art">میراث و هنر</h3>
+            <p data-fa="بازخوانی معاصر نقش‌های فرهنگی" data-en="Contemporary interpretations of cultural motifs">بازخوانی معاصر نقش‌های فرهنگی</p>
+          </div>
+        </article>
+      </div>
+
+      <p class="note" data-fa="تصاویر بالا نمونه‌های گرافیکی اولیه هستند و هنوز عکس محصولات واقعی نیستند."
+         data-en="These are initial graphic placeholders, not photographs of actual products.">
+        تصاویر بالا نمونه‌های گرافیکی اولیه هستند و هنوز عکس محصولات واقعی نیستند.
+      </p>
+    </section>
+
+    <section class="content" id="about">
+      <div class="section-head">
+        <div class="eyebrow" data-fa="داستان ژاکاو" data-en="THE ZHAKAW STORY">داستان ژاکاو</div>
+        <h2 data-fa="هنر با هویت، طراحی برای امروز" data-en="Art with Identity, Designed for Today">
+          هنر با هویت، طراحی برای امروز
+        </h2>
+        <p data-fa="ژاکاو بستری برای ارائه آثار هنری دکوراتیو و طراحی‌های الهام‌گرفته از فرهنگ و زیبایی‌شناسی معاصر است. این بخش پس از مشخص‌شدن اطلاعات واقعی کارگاه تکمیل خواهد شد."
+           data-en="Zhakaw is a platform for decorative art and contemporary designs inspired by cultural identity. This section can be expanded with the studio's verified story and details.">
+          ژاکاو بستری برای ارائه آثار هنری دکوراتیو و طراحی‌های الهام‌گرفته از فرهنگ و زیبایی‌شناسی معاصر است. این بخش پس از مشخص‌شدن اطلاعات واقعی کارگاه تکمیل خواهد شد.
+        </p>
+      </div>
+    </section>
+
+    <section class="orders" id="orders">
+      <div>
+        <div class="eyebrow" data-fa="همکاری و سفارش" data-en="ORDERS & PARTNERSHIPS">همکاری و سفارش</div>
+        <h2 data-fa="برای فضای شما، برای کسب‌وکار شما" data-en="For Your Space, For Your Business">
+          برای فضای شما، برای کسب‌وکار شما
+        </h2>
+        <p data-fa="برای سفارش تکی، سفارش اختصاصی یا دریافت اطلاعات خرید عمده، با گالری تماس بگیرید."
+           data-en="Contact the gallery for individual purchases, custom commissions or wholesale enquiries.">
+          برای سفارش تکی، سفارش اختصاصی یا دریافت اطلاعات خرید عمده، با گالری تماس بگیرید.
+        </p>
+      </div>
+      <div>
+        <div class="contact">
+          <a class="btn" href="mailto:hello@zhakaw.art" data-fa="ایمیل به گالری" data-en="Email the Gallery">ایمیل به گالری</a>
+          <a class="btn secondary" href="#gallery" data-fa="دیدن آثار" data-en="View Works">دیدن آثار</a>
+        </div>
+        <p class="note" data-fa="نشانی ایمیل بالا نمونه است؛ پیش از انتشار باید با ایمیل واقعی جایگزین شود."
+           data-en="The email above is a placeholder and must be replaced before launch.">
+          نشانی ایمیل بالا نمونه است؛ پیش از انتشار باید با ایمیل واقعی جایگزین شود.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> Zhakaw Art Gallery</span>
+    <span> · </span>
+    <span data-fa="هنر معاصر و طراحی دکوراتیو" data-en="Contemporary Art & Decorative Design">
+      هنر معاصر و طراحی دکوراتیو
+    </span>
+  </footer>
+
+  <script>
+    const languageButton = document.getElementById("languageButton");
+    let currentLanguage = "fa";
+
+    languageButton.addEventListener("click", () => {
+      currentLanguage = currentLanguage === "fa" ? "en" : "fa";
+      const isEnglish = currentLanguage === "en";
+
+      document.documentElement.lang = currentLanguage;
+      document.documentElement.dir = isEnglish ? "ltr" : "rtl";
+      languageButton.textContent = isEnglish ? "فارسی" : "English";
+
+      document.querySelectorAll("[data-fa][data-en]").forEach((element) => {
+        element.innerHTML = element.dataset[currentLanguage];
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

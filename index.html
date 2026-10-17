@@ -125,18 +125,24 @@
     .btn.secondary {
       background: transparent;
       color: var(--olive);
-    }
+  .art-panel {
+  min-height: 330px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: #f9f5eb;
+  border: 1px solid #e0d8c7;
+  overflow: hidden;
+}
 
-    .art-panel {
-      min-height: 330px;
-      display: grid;
-      place-items: center;
-      padding: 30px;
-      background:
-        radial-gradient(ellipse at 50% 45%, #e9dfc7 0 12%, transparent 12.5%),
-        linear-gradient(135deg, #ded7c5, #f9f5eb 45%, #d6d3bc);
-      border: 1px solid #e0d8c7;
-    }
+.art-panel img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 330px;
+  object-fit: contain;
+}
 
     .art-frame {
       width: min(78%, 290px);
@@ -337,13 +343,10 @@
         </div>
       </div>
 
-      <div class="art-panel" role="img" aria-label="نمونه گرافیکی تزئینی با الهام از هندسه">
-        <div class="art-frame">
-          <div class="art-inner">
-            <div class="art-symbol"></div>
-          </div>
-        </div>
-      </div>
+     <div class="art-panel">
+  <img src="7825F1F7-62F2-41DD-9853-E095163F8229.png"
+       alt="اثر هنری ژاکاو">
+</div>
     </section>
 
     <section class="content" id="gallery">

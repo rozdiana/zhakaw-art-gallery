@@ -102,13 +102,12 @@
 
     h1 span { color: var(--olive); }
 
-    .intro {
-      max-width: 490px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
   
+.intro {
+  max-width: 490px;
+  color: var(--muted);
+}
+
 .actions {
   display: flex;
   gap: 12px;
@@ -125,19 +124,18 @@
   font-size: 13px;
 }
 
-
 .btn.secondary {
   background: transparent;
   color: var(--ink);
   border: 1px solid var(--gold);
 }
 
-    .art-panel {
-  min-height: 330px;
+.art-panel {
+  height: 420px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  padding: 12px;
   background: #f9f5eb;
   border: 1px solid #e0d8c7;
   overflow: hidden;
@@ -147,18 +145,8 @@
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 330px;
   object-fit: contain;
 }
-
-    .art-frame {
-      width: min(78%, 290px);
-      aspect-ratio: 4 / 5;
-      padding: 12px;
-      background: #c0a36a;
-      box-shadow: 0 14px 35px #48412b24;
-    }
-
     .art-inner {
       height: 100%;
       display: grid;

@@ -227,10 +227,21 @@
     }
 
    
+
 .product {
   background: var(--paper);
   border: 1px solid #e7e0d2;
+  border-radius: 6px;
+  overflow: hidden;
+  min-width: 0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
+.product:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px #25251d18;
+}
+
 
 .product-art {
   min-height: 210px;

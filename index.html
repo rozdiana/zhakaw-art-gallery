@@ -256,15 +256,25 @@
   box-shadow: 0 12px 28px #25251d18;
 }
 
-
 .product-art {
   min-height: 210px;
   display: grid;
   place-items: center;
-  padding: 24px;
+  padding: 16px;
 }
+
 .product-art.one {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
   background: linear-gradient(135deg, #F3E7D5, #168C91);
+}
+
+.product-art.one img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 180px;
+  object-fit: contain;
 }
 
 .product-art.two {
@@ -414,48 +424,28 @@
       </div>
 
       <div class="products">
-        <article class="product">
-         
-<div class="product-art one">
-<img
-  src="2.png"
-  alt="اثر هنری مینیمال ژاکاو"
->
-</div>
+<article class="product">
+  <div class="product-art one">
+    <img
+      src="2.png"
+      alt="اثر هنری مینیمال ژاکاو"
+    >
+    <img
+      src="make up (1).png"
+      alt="اثر دوم آلبوم مینیمال ژاکاو"
+    >
+    <img
+      src="make up (2).png"
+      alt="اثر سوم آلبوم مینیمال ژاکاو"
+    >
+  </div>
 
-          <div class="product-info">
-            
-<h3 data-fa="آثار مینیمال" data-en="Minimalist Art">آثار مینیمال</h3>
-<p data-fa="سادگی در فرم، زیبایی در جزئیات" data-en="Simplicity in form, beauty in detail">سادگی در فرم، زیبایی در جزئیات</p>
+  <div class="product-info">
+    <h3 data-fa="آثار مینیمال" data-en="Minimalist Art">آثار مینیمال</h3>
+    <p data-fa="سادگی در فرم، زیبایی در جزئیات" data-en="Simplicity in form, beauty in detail">سادگی در فرم، زیبایی در جزئیات</p>
+  </div>
+</article>
 
-          </div>
-        </article>
-
-        <article class="product">
-        <div class="product-art two">
-  <img
-   src="make up (1).png"
-    alt="اثر هنری دوم ژاکاو"
-  >
-</div>
-          <div class="product-info">
-            <h3 data-fa="بافت و فرم" data-en="Texture & Form">بافت و فرم</h3>
-            <p data-fa="آثاری با الهام از بافت و حجم" data-en="Art inspired by texture and dimension">آثاری با الهام از بافت و حجم</p>
-          </div>
-        </article>
-
-        <article class="product">
-         <div class="product-art three">
-  <img
-    src="make up (2).png"
-    alt="اثر هنری سوم ژاکاو"
-  >
-</div>
-          <div class="product-info">
-            <h3 data-fa="میراث و هنر" data-en="Heritage & Art">میراث و هنر</h3>
-            <p data-fa="بازخوانی معاصر نقش‌های فرهنگی" data-en="Contemporary interpretations of cultural motifs">بازخوانی معاصر نقش‌های فرهنگی</p>
-          </div>
-        </article>
       </div>
 
       <p class="note" data-fa="تصاویر بالا نمونه‌های گرافیکی اولیه هستند و هنوز عکس محصولات واقعی نیستند."

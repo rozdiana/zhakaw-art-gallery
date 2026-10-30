@@ -375,7 +375,100 @@
 
   .orders { grid-template-columns: 1fr; }
 }
+/* بزرگ‌نمایی تصاویر گالری ژاکاو */
+.product-art img {
+  cursor: zoom-in;
+  transition: transform 0.25s ease;
+}
 
+.product-art img:hover {
+  transform: scale(1.025);
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(15, 20, 28, 0.94);
+  align-items: center;
+  justify-content: center;
+  padding: 55px 65px;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 15px 50px #0008;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  border: 1px solid rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.12);
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 27px;
+  display: grid;
+  place-items: center;
+}
+
+.lightbox-close {
+  top: 18px;
+  right: 20px;
+}
+
+.lightbox-prev {
+  left: 18px;
+  top: 50%;
+}
+
+.lightbox-next {
+  right: 18px;
+  top: 50%;
+}
+
+.lightbox-counter {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 13px;
+  direction: ltr;
+}
+
+@media (max-width: 760px) {
+  .lightbox {
+    padding: 55px 12px;
+  }
+
+  .lightbox-image {
+    max-width: 100%;
+    max-height: 78vh;
+  }
+
+  .lightbox-prev {
+    left: 8px;
+  }
+
+  .lightbox-next {
+    right: 8px;
+  }
+}
+    
   </style>
 </head>
 <body>
@@ -600,7 +693,24 @@
       هنر معاصر و طراحی دکوراتیو
     </span>
   </footer>
+<!-- پنجره بزرگ‌نمایی تصاویر ژاکاو -->
+<div class="lightbox" id="lightbox"
+     role="dialog" aria-modal="true"
+     aria-label="نمایش بزرگ تصاویر گالری">
 
+  <button class="lightbox-close" id="lightboxClose"
+          type="button" aria-label="بستن">×</button>
+
+  <button class="lightbox-prev" id="lightboxPrev"
+          type="button" aria-label="تصویر قبلی">‹</button>
+
+  <img class="lightbox-image" id="lightboxImage" src="" alt="">
+
+  <button class="lightbox-next" id="lightboxNext"
+          type="button" aria-label="تصویر بعدی">›</button>
+
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
   <script>
     const languageButton = document.getElementById("languageButton");
     let currentLanguage = "fa";
@@ -617,8 +727,72 @@
         element.innerHTML = element.dataset[currentLanguage];
       });
     });
+// بزرگ‌نمایی تصاویر گالری ژاکاو
+const galleryImages = Array.from(
+  document.querySelectorAll(".product-art img")
+);
 
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxClose = document.getElementById("lightboxClose");
+const lightboxPrev = document.getElementById("lightboxPrev");
+const lightboxNext = document.getElementById("lightboxNext");
+const lightboxCounter = document.getElementById("lightboxCounter");
+
+let activeImageIndex = 0;
+
+function showGalleryImage(index) {
+  activeImageIndex =
+    (index + galleryImages.length) % galleryImages.length;
+
+  const selectedImage = galleryImages[activeImageIndex];
+
+  lightboxImage.src = selectedImage.src;
+  lightboxImage.alt = selectedImage.alt;
+
+  lightboxCounter.textContent =
+    (activeImageIndex + 1) + " / " + galleryImages.length;
+}
+
+function openLightbox(index) {
+  showGalleryImage(index);
+  lightbox.classList.add("active");
+  document.body.style.overflow = "hidden";
+  lightboxClose.focus();
+}
+
+function closeLightbox() {
+  lightbox.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+galleryImages.forEach((img, index) => {
+  img.addEventListener("click", () => openLightbox(index));
+});
+
+lightboxClose.addEventListener("click", closeLightbox);
+
+lightboxPrev.addEventListener("click", () => {
+  showGalleryImage(activeImageIndex - 1);
+});
+
+lightboxNext.addEventListener("click", () => {
+  showGalleryImage(activeImageIndex + 1);
+});
+
+lightbox.addEventListener("click", (event) => {
+  if (event.target === lightbox) closeLightbox();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (!lightbox.classList.contains("active")) return;
+
+  if (event.key === "Escape") closeLightbox();
+  if (event.key === "ArrowLeft") showGalleryImage(activeImageIndex + 1);
+  if (event.key === "ArrowRight") showGalleryImage(activeImageIndex - 1);
+});
     document.getElementById("year").textContent = new Date().getFullYear();
+    
   </script>
 </body>
 </html>

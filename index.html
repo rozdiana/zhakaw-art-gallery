@@ -14,7 +14,19 @@
   place-items: center;
   padding: 24px;
 }
+.brand-logo {
+  display: block;
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  margin: 0 auto 8px;
+  cursor: zoom-in;
+  transition: transform 0.25s ease;
+}
 
+.brand-logo:hover {
+  transform: scale(1.05);
+}
 .product-art img {
   display: block;
   max-width: 100%;
@@ -473,10 +485,13 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#" aria-label="Zhakaw Art Gallery">
-      ZHAKAW
-      <small>ART GALLERY</small>
-    </a>
+   <a class="brand" href="#" aria-label="Zhakaw Art Gallery">
+  <img class="brand-logo"
+       src="logo%20zhak.png"
+       alt="لوگوی ژاکاو">
+  ZHAKAW
+  <small>ART GALLERY</small>
+</a>
 
    
 <nav>
@@ -729,9 +744,8 @@
     });
 // بزرگ‌نمایی تصاویر گالری ژاکاو
 const galleryImages = Array.from(
-  document.querySelectorAll(".product-art img")
+  document.querySelectorAll(".product-art img, .brand-logo")
 );
-
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxClose = document.getElementById("lightboxClose");
